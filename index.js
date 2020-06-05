@@ -1,3 +1,4 @@
+'use strict';
 const store = {
   items: [
     { id: cuid(), name: 'apples', checked: false },
@@ -12,12 +13,12 @@ const generateItemElement = function (item) {
   let itemTitle = `<span class='shopping-item shopping-item__checked'>${item.name}</span>`;
   if (!item.checked) {
     itemTitle = `
-     <span class='shopping-item'>${item.name}</span>
+     <span class='shopping-item' >${item.name}</span>
     `;
   }
 
   return `
-    <li class='js-item-element' data-item-id='${item.id}'>
+    <li class='js-item-element' data-item-id='${item.id}' contenteditable='true'>
       ${itemTitle}
       <div class='shopping-item-controls'>
         <button class='shopping-item-toggle js-item-toggle'>
@@ -160,6 +161,7 @@ const handleShoppingList = function () {
   handleItemCheckClicked();
   handleDeleteItemClicked();
   handleToggleFilterClick();
+  handleRender();
 };
 
 // when the page loads, call `handleShoppingList`

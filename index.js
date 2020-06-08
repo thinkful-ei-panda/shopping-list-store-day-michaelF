@@ -11,16 +11,20 @@ const store = {
 
 const generateItemElement = function (item) {
   let itemTitle = `<span class='shopping-item shopping-item__checked'>${item.name}</span>`;
+  
+  // User can edit the title of an item  
   if (!item.checked) {
+    // Think about what properties to add to the store to be a data representation of the change in the view
     itemTitle = `
-     <span class='shopping-item' >${item.name}</span>
+     <form class='js-edit-item'>
+      <input class='shopping-item' type='text' value='${item.name}' />
+    </form>
     `;
   }
 
   return `
-    <li class='js-item-element' data-item-id='${item.id}' contenteditable='true'>
+    <li class='js-item-element' data-item-id='${item.id}'>
       ${itemTitle}
-      <div class='shopping-item-controls'>
         <button class='shopping-item-toggle js-item-toggle'>
           <span class='button-label'>check</span>
         </button>
@@ -30,6 +34,23 @@ const generateItemElement = function (item) {
       </div>
     </li>`;
 };
+
+/***************************************************************************************************************************** */
+
+// New User Story
+// User can edit the title of an item
+
+// Think about what properties to add to the store to be a data representation of the change in the view
+
+//  Add the appropriate new elements to your index.html
+
+// Create a function that changes one or more properties in the store
+
+// Create a function that adds an event listener whos responsibility is to change the store and run the rendering function
+
+// You will need to update the rendering function to read the properties in your store and output HTML appropriately
+
+/***************************************************************************************************************************** */
 
 const generateShoppingItemsString = function (shoppingList) {
   const items = shoppingList.map((item) => generateItemElement(item));
@@ -161,7 +182,7 @@ const handleShoppingList = function () {
   handleItemCheckClicked();
   handleDeleteItemClicked();
   handleToggleFilterClick();
-  handleRender();
+
 };
 
 // when the page loads, call `handleShoppingList`
